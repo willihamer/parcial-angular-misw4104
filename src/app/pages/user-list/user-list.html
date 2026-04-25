@@ -63,3 +63,12 @@
     }
   </div>
 }
+
+<!-- Panel de detalle de usuario -->
+@if (selectedUser) {
+  <app-user-detail
+    [user]="selectedUser"
+    (close)="closeDetail()"
+    id="user-detail-panel"
+  ></app-user-detail>
+}

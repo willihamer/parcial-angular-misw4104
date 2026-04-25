@@ -1,0 +1,191 @@
+/* =============================================
+   DETAIL BACKDROP (modal overlay)
+   ============================================= */
+.detail-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(13, 17, 23, 0.45);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  animation: backdropFadeIn 0.2s ease;
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =============================================
+   DETAIL PANEL (modal card)
+   ============================================= */
+.detail-panel {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 8px 24px rgba(140, 149, 159, 0.2);
+  animation: panelSlideUp 0.25s ease;
+}
+
+@keyframes panelSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.detail-panel__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.detail-panel__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  color: var(--color-on-surface-variant);
+  transition: background-color 0.15s;
+  line-height: 1;
+}
+
+.detail-panel__close:hover {
+  background-color: var(--color-surface-container);
+}
+
+.detail-panel__body {
+  padding: var(--spacing-lg);
+}
+
+/* =============================================
+   HERO SECTION (avatar + name)
+   ============================================= */
+.detail-panel__hero {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.detail-panel__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+.detail-panel__username {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin: 0 0 4px;
+}
+
+.detail-panel__full-name {
+  font-size: 14px;
+  color: var(--color-on-surface-variant);
+  margin: 0 0 8px;
+}
+
+/* =============================================
+   DETAIL ROWS (label / value pairs)
+   ============================================= */
+.detail-panel__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-surface-container-high);
+  font-size: 14px;
+}
+
+.detail-panel__row:last-child {
+  border-bottom: none;
+}
+
+.detail-panel__label {
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.detail-panel__value {
+  color: var(--color-on-surface);
+  word-break: break-word;
+}
+
+/* =============================================
+   REPO BADGE CHIPS
+   ============================================= */
+.detail-repo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-container);
+  border: 1px solid var(--color-outline-variant);
+  font-size: 12px;
+  color: var(--color-on-surface-variant);
+  margin: 2px;
+}
+
+/* =============================================
+   ROLE BADGES (Consistent with user-list)
+   ============================================= */
+.detail-panel__role {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface-variant);
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid rgba(114, 119, 133, 0.3);
+  text-transform: capitalize;
+}
+
+.badge-role-admin {
+  background-color: #ffdad6 !important;
+  color: #93000a !important;
+}
+
+.badge-role-developer {
+  background-color: #d8e2ff !important;
+  color: #001a41 !important;
+}
+
+.badge-role-designer {
+  background-color: #dae3ee !important;
+  color: #141c24 !important;
+}

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TitleCasePipe, NgClass } from '@angular/common';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/usuario.service';
+import { UserDetailComponent } from '../../components/user-detail/user-detail';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [TitleCasePipe, NgClass],
+  imports: [TitleCasePipe, NgClass, UserDetailComponent],
   templateUrl: './user-list.html',
   styleUrl: './user-list.css',
 })
@@ -27,12 +28,11 @@ export class UserListComponent implements OnInit {
     this.errorMessage = '';
     this.usuarioService.getUsuarios().subscribe({
       next: (data) => {
-        console.log('data', data);
         this.users = data;
         this.isLoading = false;
       },
       error: (err) => {
-        this.errorMessage = 'Failed to load users. Please try again.';
+        this.errorMessage = 'Error al cargar los usuarios. Por favor, intente nuevamente.';
         this.isLoading = false;
         console.error('Error loading users:', err);
       },
