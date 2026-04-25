@@ -1,0 +1,42 @@
+<nav class="side-nav" id="side-nav" role="navigation" aria-label="Main navigation">
+  <!-- Brand -->
+  <div class="side-nav__header">
+    <div class="side-nav__brand">
+      <span class="material-symbols-outlined side-nav__brand-icon">hexagon</span>
+      <span class="side-nav__brand-name">GitHamer</span>
+    </div>
+    <div class="side-nav__subtitle">Consola</div>
+  </div>
+
+  <!-- Nav Items -->
+  <div class="side-nav__body">
+    <ul class="side-nav__list" role="list">
+      <li class="side-nav__item">
+        <a
+          routerLink="/users"
+          routerLinkActive="active"
+          class="side-nav__link"
+          id="nav-users"
+          (click)="onLinkClick()"
+          aria-label="Ir a Usuarios"
+        >
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">group</span>
+          Usuarios
+        </a>
+      </li>
+      <li class="side-nav__item">
+        <a
+          routerLink="/repositories"
+          routerLinkActive="active"
+          class="side-nav__link"
+          id="nav-repositories"
+          (click)="onLinkClick()"
+          aria-label="Ir a Repositorios"
+        >
+          <span class="material-symbols-outlined">terminal</span>
+          Repositorios
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
