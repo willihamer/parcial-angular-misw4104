@@ -1,0 +1,70 @@
+<div class="detail-backdrop" (click)="onClose()">
+  <div
+    class="detail-panel"
+    (click)="$event.stopPropagation()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="user.username + ' detalles'"
+  >
+    <!-- Encabezado del panel -->
+    <div class="detail-panel__header">
+      <h2 class="detail-panel__title">Perfil de Usuario</h2>
+      <button class="detail-panel__close" (click)="onClose()" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Cuerpo del panel -->
+    <div class="detail-panel__body">
+      <!-- Sección hero -->
+      <div class="detail-panel__hero">
+        <img
+          [src]="user.avatarUrl"
+          [alt]="user.name"
+          class="detail-panel__avatar"
+          onerror="this.src = 'https://i.pravatar.cc/150?img=1'"
+        />
+        <div>
+          <p class="detail-panel__username">{{ user.username }}</p>
+          <p class="detail-panel__full-name">{{ user.name }}</p>
+          <span class="detail-panel__role" [ngClass]="getRoleBadgeClass(user.role)">
+            {{ user.role | titlecase }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Filas de detalle -->
+      <div class="detail-panel__row">
+        <span class="detail-panel__label">
+          <span class="material-symbols-outlined" style="font-size: 16px">alternate_email</span>
+          Correo
+        </span>
+        <span class="detail-panel__value">{{ user.email }}</span>
+      </div>
+
+      <div class="detail-panel__row">
+        <span class="detail-panel__label">
+          <span class="material-symbols-outlined" style="font-size: 16px">location_on</span>
+          Ubicación
+        </span>
+        <span class="detail-panel__value">{{ user.location }}</span>
+      </div>
+
+      <div class="detail-panel__row">
+        <span class="detail-panel__label">
+          <span class="material-symbols-outlined" style="font-size: 16px">folder</span>
+          Repositorios
+        </span>
+        <span class="detail-panel__value">
+          @if (user.repoIds && user.repoIds.length > 0) {
+            @for (repoId of user.repoIds; track repoId) {
+              <span class="detail-repo-badge">repo-{{ repoId }}</span>
+            }
+          } @else {
+            <span class="text-muted">Sin repositorios</span>
+          }
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
