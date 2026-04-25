@@ -27,7 +27,7 @@
 
   <div class="repos-grid" id="repos-grid" role="list">
     @for (repo of repos; track repo.id) {
-      <div class="repo-card" role="listitem" [id]="'repo-card-' + repo.id">
+      <div class="repo-card" role="listitem" [id]="'repo-card-' + repo.id" [routerLink]="['/repos', repo.id]">
         <div class="repo-card__top">
           <div class="repo-card__header">
             <h3 class="repo-card__name">{{ repo.name }}</h3>

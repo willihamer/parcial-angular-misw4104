@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Repositorio } from '../../models/repositorio.model';
 import { RepositorioService } from '../../services/repositorio.service';
 
 @Component({
   selector: 'app-repo-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './repo-list.html',
   styleUrl: './repo-list.css',
 })
