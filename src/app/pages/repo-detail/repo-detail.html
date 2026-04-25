@@ -1,0 +1,76 @@
+@if (isLoading) {
+  <div class="loading-state" id="repo-detail-loading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p>Cargando repositorio...</p>
+  </div>
+}
+
+@if (!isLoading && errorMessage) {
+  <div class="error-state" id="repo-detail-error">
+    <span class="material-symbols-outlined" style="font-size: 32px">error</span>
+    {{ errorMessage }}
+    <button class="back-btn" (click)="goBack()">Volver a Repositorios</button>
+  </div>
+}
+
+@if (!isLoading && !errorMessage && repo) {
+  <div class="detail-page" id="repo-detail-page">
+    <button class="back-btn" (click)="goBack()" id="back-btn">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Volver
+    </button>
+
+    <div class="detail-card">
+      <div class="detail-card__header">
+        <span class="material-symbols-outlined detail-card__icon">terminal</span>
+        <h1 class="detail-card__name" id="repo-detail-name">{{ repo.name }}</h1>
+      </div>
+
+      <p class="detail-card__description">{{ repo.description }}</p>
+
+      <div class="detail-card__rows">
+        <div class="detail-row">
+          <span class="detail-row__label">
+            <span class="material-symbols-outlined">code</span>
+            Lenguaje
+          </span>
+          <span class="detail-row__value">{{ repo.language }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-row__label">
+            <span class="material-symbols-outlined">star</span>
+            Estrellas
+          </span>
+          <span class="detail-row__value">{{ repo.stars }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-row__label">
+            <span class="material-symbols-outlined">calendar_today</span>
+            Creado
+          </span>
+          <span class="detail-row__value">{{ repo.createdAt }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-row__label">
+            <span class="material-symbols-outlined">person</span>
+            Propietario ID
+          </span>
+          <span class="detail-row__value">{{ repo.ownerId }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-row__label">
+            <span class="material-symbols-outlined">tag</span>
+            ID
+          </span>
+          <span class="detail-row__value">{{ repo.id }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
