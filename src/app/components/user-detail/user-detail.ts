@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TitleCasePipe, NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [TitleCasePipe, NgClass],
+  imports: [TitleCasePipe, NgClass, RouterLink],
   templateUrl: './user-detail.html',
   styleUrl: './user-detail.css',
 })
