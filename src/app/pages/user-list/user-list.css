@@ -1,0 +1,190 @@
+/* =============================================
+   USER LIST — PAGE HEADER
+   ============================================= */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--color-on-surface-variant);
+  margin: 4px 0 0;
+}
+
+/* =============================================
+   USERS GRID (responsive)
+   ============================================= */
+.users-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gutter);
+}
+
+@media (min-width: 576px) {
+  .users-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .users-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .users-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =============================================
+   USER CARD
+   ============================================= */
+.user-card {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+  cursor: pointer;
+  height: 100%;
+}
+
+.user-card:hover {
+  background-color: var(--color-surface-container-low);
+  box-shadow: 0 4px 12px rgba(140, 149, 159, 0.15);
+  transform: translateY(-1px);
+}
+
+.user-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 1px solid var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+.user-card__info {
+  width: 100%;
+}
+
+.user-card__username {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 8px;
+}
+
+.user-card__role {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface-variant);
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid rgba(114, 119, 133, 0.3);
+  text-transform: capitalize;
+}
+
+.user-card__location {
+  font-size: 12px;
+  color: var(--color-on-surface-variant);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.user-card__location .material-symbols-outlined {
+  font-size: 14px;
+}
+
+.user-card__btn {
+  width: 100%;
+  margin-top: auto;
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  color: var(--color-on-surface);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  line-height: 1.2;
+}
+
+.user-card__btn:hover {
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
+}
+
+/* =============================================
+   ROLE BADGES
+   ============================================= */
+.badge-role-admin {
+  background-color: #ffdad6 !important;
+  color: #93000a !important;
+}
+
+.badge-role-developer {
+  background-color: #d8e2ff !important;
+  color: #001a41 !important;
+}
+
+.badge-role-designer {
+  background-color: #dae3ee !important;
+  color: #141c24 !important;
+}
+
+/* =============================================
+   LOADING & ERROR STATES
+   ============================================= */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+  gap: var(--spacing-md);
+  color: var(--color-on-surface-variant);
+}
+
+.error-state {
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-error);
+  background-color: #ffdad6;
+}
