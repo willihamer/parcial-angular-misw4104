@@ -58,7 +58,7 @@
         <span class="detail-panel__value">
           @if (user.repoIds && user.repoIds.length > 0) {
             @for (repoId of user.repoIds; track repoId) {
-              <span class="detail-repo-badge">repo-{{ repoId }}</span>
+              <a [routerLink]="['/repos', repoId]" (click)="onClose()" class="detail-repo-badge" style="text-decoration: none;">repo-{{ repoId }}</a>
             }
           } @else {
             <span class="text-muted">Sin repositorios</span>

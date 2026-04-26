@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Repositorio } from '../../models/repositorio.model';
 import { RepositorioService } from '../../services/repositorio.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-repo-detail',
@@ -12,13 +13,15 @@ import { RepositorioService } from '../../services/repositorio.service';
 })
 export class RepoDetailComponent implements OnInit {
   repo: Repositorio | undefined;
+  ownerUsername: string | undefined;
   isLoading = false;
   errorMessage = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private repositorioService: RepositorioService
+    private repositorioService: RepositorioService,
+    private usuarioService: UsuarioService
   ) {}
 
   ngOnInit(): void {
@@ -27,9 +30,20 @@ export class RepoDetailComponent implements OnInit {
     this.repositorioService.getRepositorioById(id).subscribe({
       next: (data) => {
         this.repo = data;
-        this.isLoading = false;
         if (!data) {
           this.errorMessage = 'Repositorio no encontrado.';
+          this.isLoading = false;
+        } else {
+          this.usuarioService.getUsuarioById(data.ownerId).subscribe({
+            next: (user) => {
+              this.ownerUsername = user?.username || `ID: ${data.ownerId}`;
+              this.isLoading = false;
+            },
+            error: () => {
+              this.ownerUsername = `ID: ${data.ownerId}`;
+              this.isLoading = false;
+            }
+          });
         }
       },
       error: (err) => {
